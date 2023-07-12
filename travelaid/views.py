@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .serializers import loginUsersSerializer,UserRegisterSerializer,HotelRegisterSerializer,RestaurentRegisterSerializer,ResortRegisterSerializer,TravelsRegisterSerializer,GuideRegisterSerializer
-from .models import log, user, Hotel, Restaurent, Resort, Travels, Guide
+from .serializers import loginUsersSerializer,UserRegisterSerializer,HotelRegisterSerializer,RestaurentRegisterSerializer,ResortRegisterSerializer,TravelsRegisterSerializer,GuideRegisterSerializer,SpotsSerializer
+from .models import log, user, Hotel, Restaurent, Resort, Travels, Guide,Spots
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
@@ -1005,3 +1005,137 @@ class Moredetails_of_Guide_APIView(GenericAPIView):
             return Response({'data': serializer.data, 'message': 'Travel data updated successfully', 'success': True}, status=status.HTTP_201_CREATED)
 
         return Response({'message': 'Invalid request', 'success': False}, status=status.HTTP_400_BAD_REQUEST)
+
+#Hotel search
+class HotelsSearchAPIView(GenericAPIView):
+    def post(self, request):
+        query = request.data.get('query')
+        print(query)
+
+        i = Hotel.objects.filter(hotelname__icontains=query) | Hotel.objects.filter(hotellocation__icontains=query)
+        for dta in i:
+            print(dta)
+
+        data = [{'hotelname': info.hotelname, 'hotelphone': info.hotelphone, 'hotelrating': info.hotelrating, 'hotelcategory': info.hotelcategory,'description': info.description, 'specialoffers': info.specialoffers}
+                for info in i]
+        return Response({'data': data, 'message': 'Successfully fetched', 'success': True}, status=status.HTTP_200_OK)
+
+
+#Restaurent search
+class RestaurentSearchAPIView(GenericAPIView):
+    def post(self, request):
+        query = request.data.get('query')
+        print(query)
+
+        i = Restaurent.objects.filter(restaurentname__icontains=query) | Restaurent.objects.filter(restaurentlocation__icontains=query)
+        for dta in i:
+            print(dta)
+
+        data = [{'restaurentname': info.restaurentname, 'restaurentphone': info.restaurentphone, 'restaurentlocation': info.restaurentlocation, 'restaurentpin': info.restaurentpin,'restaurentrating': info.restaurentrating, 'restaurentcategory': info.restaurentcategory}
+                for info in i]
+        return Response({'data': data, 'message': 'Successfully fetched', 'success': True}, status=status.HTTP_200_OK)
+
+
+#Resort search
+class ResortSearchAPIView(GenericAPIView):
+    def post(self, request):
+        query = request.data.get('query')
+        print(query)
+
+        i = Resort.objects.filter(resortname__icontains=query) | Resort.objects.filter(resortlocation__icontains=query)
+        for dta in i:
+            print(dta)
+
+        data = [{'resortname': info.resortname, 'resortphone': info.resortphone, 'resortlocation': info.resortlocation, 'resortpincode': info.resortpincode,'restaurentrating': info.resortrating, 'resortrating': info.restaurentcategory}
+                for info in i]
+        return Response({'data': data, 'message': 'Successfully fetched', 'success': True}, status=status.HTTP_200_OK)
+
+
+#Travels search
+class TravelsSearchAPIView(GenericAPIView):
+    def post(self, request):
+        query = request.data.get('query')
+        print(query)
+
+
+        i = Travels.objects.filter(travelsname__icontains=query) | Travels.objects.filter(travelslocation__icontains=query)
+        for dta in i:
+            print(dta)
+
+        data = [{'travelsname': info.travelsname, 'travelsphone': info.travelsphone, 'travelslocation': info.travelslocation, 'travelspincode': info.travelspincode,'travelsrating': info.travelsrating, 'reviews': info.reviews}
+                for info in i]
+        return Response({'data': data, 'message': 'Successfully fetched', 'success': True}, status=status.HTTP_200_OK)
+
+
+#Guide search
+class GuideSearchAPIView(GenericAPIView):
+    def post(self, request):
+        query = request.data.get('query')
+        print(query)
+
+
+        i = Guide.objects.filter(guidename__icontains=query) | Guide.objects.filter(guidelocation__icontains=query)
+        for dta in i:
+            print(dta)
+
+        data = [{'guidename': info.guidename, 'guidephone': info.guidephone, 'guidelocation': info.guidelocation, 'guidepincode': info.guidepincode,'guiderating': info.guiderating, 'Reviews': info.Reviews}
+                for info in i]
+        return Response({'data': data, 'message': 'Successfully fetched', 'success': True}, status=status.HTTP_200_OK)
+
+#Add spot by user
+class UseraddSpotsAPIView(GenericAPIView):
+    serializer_class = SpotsSerializer
+
+    def post(self, request):
+        username=""
+        Spotsname = request.data.get('Spotsname')
+        Spotsclimat = request.data.get('Spotsclimat')
+        Bestperiod = request.data.get('Bestperiod')
+        description = request.data.get('description')
+        Visiterscount = request.data.get('Visiterscount')
+        Rating = request.data.get('Rating')
+        Area = request.data.get('Area')
+        Views=request.data.get('View')
+        country = request.data.get('country')
+        users = request.data.get('user')
+        Spots_status="0"
+
+        
+
+        data = user.objects.filter(id=users).values()
+        for i in data:
+            username=i['name']
+        
+        
+        serializer = self.serializer_class(data= {'Spotsname':Spotsname, 'Spotsclimat':Spotsclimat,'Bestperiod':Bestperiod,'description':description,'Visiterscount':Visiterscount,'Rating':Rating,'Area':Area,'View':Views,'country':country,'user':users,'username':username,'Spots_status':Spots_status})
+        print(serializer)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'data':serializer.data, 'message':'Spot added successfully', 'success':True}, status = status.HTTP_201_CREATED)
+        return Response({'data':serializer.errors, 'message':'Failed','success':False}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+# view all Spot 
+
+class Get_All_SpotsAPIView(GenericAPIView):
+    serializer_class = SpotsSerializer
+    def get(self,request):
+        queryset = Spots.objects.all()
+        if(queryset.count()>0):
+            serializer = SpotsSerializer(queryset,many= True)
+   
+
+            return Response({'data':serializer.data,'message':'all user data set','success' : True},status = status.HTTP_200_OK)
+        else:
+    
+            return Response({'data':'non data available','success':False},status = status.HTTP_201_CREATED)
+
+
+#single Spot view
+
+class Get_single_SpotsAPIView(GenericAPIView):
+    def get(self,request,id):
+        queryset = Spots.objects.get(pk=id)
+        serializer =SpotsSerializer(queryset)
+        return Response({'data':serializer.data,'message':'single Spot data','success':True},status =status.HTTP_200_OK)

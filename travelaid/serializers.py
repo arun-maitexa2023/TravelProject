@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import log,user,Hotel,Restaurent,Resort,Travels,Guide
+from .models import log,user,Hotel,Restaurent,Resort,Travels,Guide,Spots
 
 class loginUsersSerializer(serializers.ModelSerializer):
     class Meta:
@@ -47,3 +47,11 @@ class GuideRegisterSerializer(serializers.ModelSerializer):
         fields = '__all__'
     def create(self,validated_data):
         return Guide.objects.create(**validated_data)
+
+class SpotsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Spots
+        fields = '__all__'
+    def create(self,validated_data):
+        return Spots.objects.create(**validated_data)
+

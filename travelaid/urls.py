@@ -79,4 +79,31 @@ urlpatterns =[
    #add more details Guide
 
    path('Moredetails_of_Guide_APIView/<int:id>',views.Moredetails_of_Guide_APIView.as_view(), name='Moredetails_of_Guide_APIView'),
+
+   #filter Hotel by location or name
+   path('HotelsSearchAPIView',views.HotelsSearchAPIView.as_view(), name='HotelsSearchAPIView'),
+   
+   
+   #filter Restaurent by location or name
+   path('RestaurentSearchAPIView',views.RestaurentSearchAPIView.as_view(), name='RestaurentSearchAPIView'),
+  
+  #filter Resort by location or name
+   path('ResortSearchAPIView',views.ResortSearchAPIView.as_view(), name='ResortSearchAPIView'),
+  
+   #filter Travels by location or name
+   path('ResortSearchAPIView',views.ResortSearchAPIView.as_view(), name='ResortSearchAPIView'),
+
+   #filter Guide by location or name
+   path('GuideSearchAPIView',views.GuideSearchAPIView.as_view(), name='GuideSearchAPIView'),
+
+   #Add spot
+   path('TravelsSearchAPIView',views.TravelsSearchAPIView.as_view(), name='TravelsSearchAPIView'),
+
+   #view all spot
+   path('Get_All_SpotsAPIView',views.Get_All_SpotsAPIView.as_view(), name='Get_All_SpotsAPIView'),
+
+ #view Single spot
+   path('Get_single_SpotsAPIView/<int:id>',views.Get_single_SpotsAPIView.as_view(), name='Get_single_SpotsAPIView'),
+
+
 ]
