@@ -172,6 +172,7 @@ class Spots(models.Model):
     user=models.ForeignKey(user, on_delete=models.CASCADE)
     username=models.CharField(max_length = 50)
     Spots_status=models.CharField(max_length = 50)
+<<<<<<< HEAD
   
     def __str__(self):
         return self.Spotsname
@@ -293,6 +294,86 @@ class Chatcommunity(models.Model):
     def __str__(self):
         return self.Communityname
 
+=======
+
+
+    
+    def __str__(self):
+        return self.Spotsname
+    
+# class Userprofile(models.Model):
+#     Patrons=models.CharField(max_length = 50)
+#     Average =models.CharField(max_length = 50)
+#     Solo = models.CharField(max_length = 50)
+#     Leadingcommunity=models.CharField(max_length = 50,null=True)
+#     Includingcommunity =models.CharField(max_length = 50,null=True)
+#     Nextdestination =models.CharField(max_length = 50,null=True)
+    
+#     login=models.ForeignKey(log, on_delete=models.CASCADE)
+
+    
+#     def __str__(self):
+#         return self.Patrons
+
+# class Plannedtrip(models.Model):
+#     Startingpoint=models.CharField(max_length = 50)
+#     Destination =models.CharField(max_length = 50)
+#     Days = models.CharField(max_length = 50)
+#     Nights=models.CharField(max_length = 50)
+#     Plan =models.CharField(max_length = 50,null=True)
+#     Guide =models.CharField(max_length = 50,null=True)
+#     Travels =models.CharField(max_length = 50,null=True)
+#     Persons =models.CharField(max_length = 50,null=True)
+#     Budget =models.CharField(max_length = 50,null=True)
+    
+#     login=models.ForeignKey(log, on_delete=models.CASCADE)
+
+    
+#     def __str__(self):
+#         return self.Startingpoint
+
+# class Plannedtrip(models.Model):
+#     Startingpoint=models.CharField(max_length = 50)
+#     Destination =models.CharField(max_length = 50)
+#     Days = models.CharField(max_length = 50)
+#     Nights=models.CharField(max_length = 50)
+#     Plan =models.CharField(max_length = 50,null=True)
+#     Guide =models.CharField(max_length = 50,null=True)
+#     Travels =models.CharField(max_length = 50,null=True)
+#     Persons =models.CharField(max_length = 50,null=True)
+#     Budget =models.CharField(max_length = 50,null=True)
+    
+#     login=models.ForeignKey(log, on_delete=models.CASCADE)
+
+    
+#     def __str__(self):
+#         return self.Startingpoint
+
+# class Comments(models.Model):
+#     Commenttext=models.CharField(max_length = 50)
+#     Createddate =models.CharField(max_length = 50)
+    
+    
+#     login=models.ForeignKey(log, on_delete=models.CASCADE)
+
+    
+#     def __str__(self):
+#         return self.Commenttext
+
+# class Notification(models.Model):
+#     Sender=models.CharField(max_length = 50)
+#     Receiver =models.CharField(max_length = 50)
+#     Notification = models.CharField(max_length = 50)
+#     Date=models.CharField(max_length = 50)
+#     Action =models.CharField(max_length = 50,null=True)
+    
+    
+#     login=models.ForeignKey(log, on_delete=models.CASCADE)
+
+    
+#     def __str__(self):
+#         return self.Sender
+>>>>>>> 7d5952752fe38b15e18e2182ad54c769f290efdd
 
 # class Hotelbooking(models.Model):
 #     Hotelname=models.CharField(max_length = 50)
@@ -352,6 +433,24 @@ class Chatcommunity(models.Model):
 #     def __str__(self):
 #         return self.Amount
 
+<<<<<<< HEAD
+=======
+# class Packege(models.Model):
+#     Packegename=models.CharField(max_length = 50)
+#     Destination =models.CharField(max_length = 50)
+#     Price = models.CharField(max_length = 50)
+#     Startdate = models.CharField(max_length = 50)
+#     Enddate = models.CharField(max_length = 50)
+#     Bookingcount = models.CharField(max_length = 50)
+
+    
+      
+#     login=models.ForeignKey(log, on_delete=models.CASCADE)
+
+    
+#     def __str__(self):
+#         return self.Packegename
+>>>>>>> 7d5952752fe38b15e18e2182ad54c769f290efdd
 
 
 # class Reels(models.Model):
@@ -369,3 +468,20 @@ class Chatcommunity(models.Model):
 #     def __str__(self):
 #         return self.Footagelength
 
+<<<<<<< HEAD
+=======
+# class Chatcommunity(models.Model):
+#     Communityname=models.CharField(max_length = 50)
+#     Chat =models.CharField(max_length = 50)
+#     Createdtime = models.CharField(max_length = 50)
+#     Uploaddate = models.CharField(max_length = 50)
+    
+
+    
+      
+#     login=models.ForeignKey(log, on_delete=models.CASCADE)
+
+    
+#     def __str__(self):
+#         return self.Communityname
+>>>>>>> 7d5952752fe38b15e18e2182ad54c769f290efdd

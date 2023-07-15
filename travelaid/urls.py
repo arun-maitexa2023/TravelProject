@@ -96,14 +96,20 @@ urlpatterns =[
    #filter Guide by location or name
    path('GuideSearchAPIView',views.GuideSearchAPIView.as_view(), name='GuideSearchAPIView'),
 
+<<<<<<< HEAD
    #filter Travels by location or name
    path('TravelsSearchAPIView',views.TravelsSearchAPIView.as_view(), name='TravelsSearchAPIView'),
    #Add spot
    path('UseraddSpotsAPIView',views.UseraddSpotsAPIView.as_view(), name='UseraddSpotsAPIView'),
+=======
+   #Add spot
+   path('TravelsSearchAPIView',views.TravelsSearchAPIView.as_view(), name='TravelsSearchAPIView'),
+>>>>>>> 7d5952752fe38b15e18e2182ad54c769f290efdd
 
    #view all spot
    path('Get_All_SpotsAPIView',views.Get_All_SpotsAPIView.as_view(), name='Get_All_SpotsAPIView'),
 
+<<<<<<< HEAD
    #view Single spot
    path('Get_single_SpotsAPIView/<int:id>',views.Get_single_SpotsAPIView.as_view(), name='Get_single_SpotsAPIView'),
 
@@ -212,5 +218,10 @@ urlpatterns =[
   path('Delete_userAPIView/<int:log_id>',views.Delete_userAPIView.as_view(), name='Delete_userAPIView'),
 
 
+=======
+ #view Single spot
+   path('Get_single_SpotsAPIView/<int:id>',views.Get_single_SpotsAPIView.as_view(), name='Get_single_SpotsAPIView'),
+
+>>>>>>> 7d5952752fe38b15e18e2182ad54c769f290efdd
 
 ]

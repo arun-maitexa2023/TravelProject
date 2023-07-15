@@ -1,5 +1,9 @@
 from rest_framework import serializers
+<<<<<<< HEAD
 from .models import log,user,Hotel,Restaurent,Resort,Travels,Guide,Spots,Userprofile,Plannedtrip,Comments,Notification,PackegeHotel,PackegeResort,PackegeTravels,Chatcommunity
+=======
+from .models import log,user,Hotel,Restaurent,Resort,Travels,Guide,Spots
+>>>>>>> 7d5952752fe38b15e18e2182ad54c769f290efdd
 
 class loginUsersSerializer(serializers.ModelSerializer):
     class Meta:
@@ -55,6 +59,7 @@ class SpotsSerializer(serializers.ModelSerializer):
     def create(self,validated_data):
         return Spots.objects.create(**validated_data)
 
+<<<<<<< HEAD
 class UserprofileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Userprofile
@@ -115,3 +120,5 @@ class ChatcommunitySerializer(serializers.ModelSerializer):
         fields = '__all__'
     def create(self,validated_data):
         return Chatcommunity.objects.create(**validated_data)
+=======
+>>>>>>> 7d5952752fe38b15e18e2182ad54c769f290efdd
