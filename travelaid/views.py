@@ -2,15 +2,13 @@ from django.shortcuts import render,redirect
 <<<<<<< HEAD
 from .serializers import loginUsersSerializer,UserRegisterSerializer,HotelRegisterSerializer,RestaurentRegisterSerializer,ResortRegisterSerializer,TravelsRegisterSerializer,GuideRegisterSerializer,SpotsSerializer,UserprofileSerializer,PlannedtripSerializer,CommentsSerializer,NotificationSerializer,PackegeHotelSerializer,PackegeResortSerializer,PackegeTravelsSerializer,ChatcommunitySerializer,ReelsSerializer,ResortbookingSerializer,HotelbookingSerializer
 from .models import log, user, Hotel, Restaurent, Resort, Travels, Guide,Spots,Userprofile,Plannedtrip,Comments,Notification,PackegeHotel,PackegeResort,PackegeTravels,Chatcommunity,Reels,Resortbooking,Hotelbooking
-=======
-<<<<<<< HEAD
+
 from .serializers import loginUsersSerializer,UserRegisterSerializer,HotelRegisterSerializer,RestaurentRegisterSerializer,ResortRegisterSerializer,TravelsRegisterSerializer,GuideRegisterSerializer,SpotsSerializer,UserprofileSerializer,PlannedtripSerializer,CommentsSerializer,NotificationSerializer,PackegeHotelSerializer,PackegeResortSerializer,PackegeTravelsSerializer,ChatcommunitySerializer
 from .models import log, user, Hotel, Restaurent, Resort, Travels, Guide,Spots,Userprofile,Plannedtrip,Comments,Notification,PackegeHotel,PackegeResort,PackegeTravels,Chatcommunity
-=======
+
 from .serializers import loginUsersSerializer,UserRegisterSerializer,HotelRegisterSerializer,RestaurentRegisterSerializer,ResortRegisterSerializer,TravelsRegisterSerializer,GuideRegisterSerializer,SpotsSerializer
 from .models import log, user, Hotel, Restaurent, Resort, Travels, Guide,Spots
->>>>>>> 7d5952752fe38b15e18e2182ad54c769f290efdd
->>>>>>> 0ea81861ee3de3a45b34c1aab06add84330701e3
+
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
@@ -1155,11 +1153,6 @@ class Get_single_SpotsAPIView(GenericAPIView):
         queryset = Spots.objects.get(pk=id)
         serializer =SpotsSerializer(queryset)
         return Response({'data':serializer.data,'message':'single Spot data','success':True},status =status.HTTP_200_OK)
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 0ea81861ee3de3a45b34c1aab06add84330701e3
-
 
 
 
@@ -1839,7 +1832,3 @@ class Delete_Hotelbooking(GenericAPIView):
         delmember = Hotelbooking.objects.get(pk=id)
         delmember.delete()
         return Response({'message':'Deleted successfully', 'success':True}, status=status.HTTP_200_OK)
-=======
-=======
->>>>>>> 7d5952752fe38b15e18e2182ad54c769f290efdd
->>>>>>> 0ea81861ee3de3a45b34c1aab06add84330701e3
